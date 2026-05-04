@@ -2,14 +2,14 @@
 
 ![wildbox.png](https://github.com/3DOM-FBK/WildBox/blob/master/WildBox.png)
 
-WildBox is a **6-species 3D wildlife detection benchmark** built from drone footage. Every frame carries:
+WildBox is a **3D wildlife detection benchmark** of drone footage. Every frame carries:
 
 - a **2D bounding box** (tight, derived from a SAM3 instance mask),
 - a **3D cuboid** (centre, dimensions, full 3×3 rotation) in the camera frame,
 - a **track ID** linking the same animal across frames within a segment,
 - and per-frame camera intrinsics (focal length + principal point).
 
-The 3D cuboids are recovered from per-segment monocular reconstruction (VGGT) and are normalised within each segment so that the median $|z_{\mathrm{cam}}|$ of valid GT cuboids equals 1; the per-segment scale factor is provided as metadata for users who want absolute-scale evaluation.
+The 3D cuboids are recovered from per-segment monocular reconstruction and are normalised within each segment so that the median $|z_{\mathrm{cam}}|$ of valid GT cuboids equals 1; the per-segment scale factor is provided as metadata for users who want absolute-scale evaluation.
 
 Format-wise the dataset is **Omni3D-compatible** (single JSON per split with frame-instance records) and **KITTI-compatible** (per-frame text files with `class trunc occ alpha x1 y1 x2 y2 h w l x y z ry score`).
 
