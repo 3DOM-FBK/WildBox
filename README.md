@@ -1,4 +1,7 @@
 # WildBox
+
+![wildbox.png](https://github.com/3DOM-FBK/WildBox/blob/master/WildBox.png)
+
 WildBox is a **6-species 3D wildlife detection benchmark** built from drone footage. Every frame carries:
 
 - a **2D bounding box** (tight, derived from a SAM3 instance mask),
