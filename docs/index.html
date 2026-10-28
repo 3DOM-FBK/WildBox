@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WildBox</title>
+<meta name="description" content="WildBox: A Dataset and Benchmark for Aerial Monocular 3D Detection of African Savanna Wildlife">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1f24; --muted:#5b6470; --accent:#0b7a4b; --accent2:#155e95;
+  --bg:#ffffff; --band:#f6f7f4; --line:#e4e7e2; --card:#ffffff;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e8eaed; --muted:#9aa3ad; --accent:#4cc38a; --accent2:#6db3e8;
+    --bg:#13161a; --band:#191d22; --line:#2a2f36; --card:#1b2026;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e8eaed; --muted:#9aa3ad; --accent:#4cc38a; --accent2:#6db3e8;
+  --bg:#13161a; --band:#191d22; --line:#2a2f36; --card:#1b2026;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Noto Sans',system-ui,sans-serif;line-height:1.6;font-size:17px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:'Google Sans','Noto Sans',sans-serif;line-height:1.2}
+h1{font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:700;margin:1.6rem 0 .6rem;text-align:center}
+h2{font-size:1.45rem;margin:2.6rem 0 .8rem;border-bottom:1px solid var(--line);padding-bottom:.35rem}
+.authors{text-align:center;font-size:1.02rem;margin:.4rem 0 .2rem}
+.authors b{font-weight:600}
+.authors sup{color:var(--muted);font-size:.72em}
+.affils{text-align:center;color:var(--muted);font-size:.82rem;max-width:860px;margin:.4rem auto .6rem}
+.venue{text-align:center;font-family:'Google Sans','Noto Sans',sans-serif;font-weight:700;
+  font-size:1.15rem;margin:.2rem 0 .6rem}
+.venue a{color:var(--accent2);text-decoration:none}
+.btnrow{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:1.1rem 0 1.6rem}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1.05rem;border-radius:999px;
+  background:var(--ink);color:var(--bg);text-decoration:none;font-weight:600;font-size:.95rem}
+.btn.alt{background:var(--accent)}
+.btn.alt2{background:var(--accent2)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:1.4rem 0}
+.stat{background:var(--band);padding:.85rem .5rem;text-align:center}
+.stat .n{font-family:'Google Sans',sans-serif;font-weight:700;font-size:1.35rem;color:var(--accent)}
+.stat .l{color:var(--muted);font-size:.8rem}
+.vidgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:.8rem;margin:1rem 0}
+.vidgrid figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vidgrid video{width:100%;display:block}
+.vidgrid figcaption{padding:.4rem .8rem;color:var(--muted);font-size:.85rem}
+figure.fig{margin:1.4rem 0;text-align:center}
+figure.fig img{max-width:100%;border-radius:10px;border:1px solid var(--line)}
+figure.fig figcaption{color:var(--muted);font-size:.88rem;margin-top:.5rem;text-align:left}
+.abstract{background:var(--band);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.4rem;margin:.6rem 0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.93rem}
+th,td{padding:.45rem .7rem;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{border-bottom:2px solid var(--ink)}
+.hl{color:var(--accent);font-weight:700}
+pre.bib{background:var(--band);border:1px solid var(--line);border-radius:12px;
+  padding:1rem 1.2rem;overflow-x:auto;font-size:.82rem;line-height:1.5}
+.footer{color:var(--muted);font-size:.85rem;text-align:center;margin:3rem 0 2rem}
+.note{color:var(--muted);font-size:.86rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>WildBox: A Dataset and Benchmark for Aerial Monocular 3D&nbsp;Detection of African Savanna Wildlife</h1>
+
+  <p class="authors">
+    <b>Vandita Shukla</b><sup>1,2</sup> · Kilian Meier<sup>3</sup> · Lucie Laporte-Devylder<sup>4</sup> ·
+    Camille Rondeau Saint-Jean<sup>4</sup> · Jenna M. Kline<sup>5</sup> · Blair R. Costelloe<sup>6,7,8</sup> ·
+    Devis Tuia<sup>9</sup> · Fabio Remondino<sup>1</sup> · Benjamin Risse<sup>2</sup>
+  </p>
+  <p class="affils">
+    <sup>1</sup>Fondazione Bruno Kessler, Trento &nbsp;·&nbsp;
+    <sup>2</sup>University of Münster &nbsp;·&nbsp;
+    <sup>3</sup>University of Bristol &nbsp;·&nbsp;
+    <sup>4</sup>University of Southern Denmark &nbsp;·&nbsp;
+    <sup>5</sup>The Ohio State University &nbsp;·&nbsp;
+    <sup>6,7,8</sup>Max Planck Institute of Animal Behavior / University of Konstanz &nbsp;·&nbsp;
+    <sup>9</sup>EPFL
+  </p>
+
+  <p class="venue"><a href="https://neurips.cc">NeurIPS 2026</a></p>
+
+  <div class="btnrow">
+    <a class="btn" href="https://arxiv.org/pdf/2606.21309">📄 Paper</a>
+    <a class="btn alt2" href="https://arxiv.org/abs/2606.21309">arXiv</a>
+    <a class="btn alt" href="#" aria-disabled="true" title="Hugging Face link coming soon">🗄️ Dataset — coming soon</a>
+    <a class="btn" href="https://github.com/3DOM-FBK/WildBox">💻 Code</a>
+    <a class="btn alt2" href="#bibtex">BibTeX</a>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">237,505</div><div class="l">3D boxes</div></div>
+    <div class="stat"><div class="n">59,758</div><div class="l">frames @ 10 Hz</div></div>
+    <div class="stat"><div class="n">7 / 6</div><div class="l">species / classes</div></div>
+    <div class="stat"><div class="n">64</div><div class="l">videos</div></div>
+    <div class="stat"><div class="n">345</div><div class="l">segments</div></div>
+    <div class="stat"><div class="n">3</div><div class="l">field sites</div></div>
+  </div>
+
+  <div class="vidgrid">
+    <figure><video autoplay muted loop playsinline src="static/videos/zebra_tracks.mp4"></video>
+      <figcaption>Plains zebras — each color is one animal's 3D box track</figcaption></figure>
+    <figure><video autoplay muted loop playsinline src="static/videos/elephant_tracks.mp4"></video>
+      <figcaption>African bush elephants — seven identities tracked through the herd</figcaption></figure>
+    <figure><video autoplay muted loop playsinline src="static/videos/rhino_open.mp4"></video>
+      <figcaption>Rhinos in open rangeland</figcaption></figure>
+    <figure><video autoplay muted loop playsinline src="static/videos/rhino_bush.mp4"></video>
+      <figcaption>Rhinos under partial occlusion in dense shrub</figcaption></figure>
+  </div>
+
+  <h2>Abstract</h2>
+  <div class="abstract">
+    <p>We introduce WildBox, a dataset and benchmark for monocular 3D detection of wildlife from
+    drone video, comprising 237,505 3D bounding box annotations across seven African savanna
+    species grouped into six benchmark classes. Annotations follow a KITTI/Omni3D-compatible
+    format in a per-segment scale-normalised camera frame, with instance identities maintained
+    across each segment. We evaluate two open-vocabulary monocular 3D architectures,
+    OVMono3D-LIFT and DetAny3D, under zero-shot, ground-truth 2D box prompt, and supervised
+    fine-tuning protocols. Open-vocabulary 2D foundation models provide usable zero-shot
+    wildlife localisation (50.55 AP@50), but <span class="hl">zero-shot 3D detection collapses
+    to 0.00 AP</span> across both architectures and every 2D-input condition tested, including
+    ground-truth 2D box prompts—isolating the failure to the 3D stage. Fine-tuning on WildBox
+    recovers performance to 8.68±0.47 AP-BEV@0.50 and 13.17±0.69 AP3D macro.
+    <span class="hl">Depth contributes 84% of normalised Hausdorff distance after fine-tuning
+    and over 99% in zero-shot</span>, identifying monocular aerial depth as the dominant open
+    problem in this regime. A coarse-to-fine curriculum—pretraining on a merged zebra class
+    before fine-tuning on the Grévy's/plains split—improves macro 3D performance with less
+    total compute, with the largest gains on the two zebra subclasses. WildBox is released with
+    video-level splits, evaluation code, and baseline checkpoints to enable progress in 3D
+    wildlife perception from drone video.</p>
+  </div>
+
+  <h2>The dataset</h2>
+  <p>WildBox aggregates oblique drone footage from field campaigns (2023–2026) at
+  Ol&nbsp;Pejeta Conservancy (Kenya), Bristol Zoological Society (UK), and Mpala Research
+  Centre (Kenya, via the KABR dataset). Seven species — reticulated giraffe, plains zebra,
+  Grévy's zebra, African bush elephant, Thomson's gazelle, and black &amp; white rhinoceros —
+  are annotated as six benchmark classes. Splits are constructed at the video level with
+  species stratification, preventing within-sequence leakage of background, herd, or
+  animal identity.</p>
+
+  <p>Each video segment ships frames (1920×1080 @ 10 Hz), per-frame camera intrinsics and
+  extrinsics, KITTI-format labels with per-frame calibration, annotator-native tracking with
+  full 3×3 rotations and per-segment instance identities, and consolidated Omni3D-format
+  train/val JSONs.</p>
+
+  <h2>Benchmark findings</h2>
+  <table>
+    <thead><tr><th>Protocol</th><th>AP3D macro</th><th>AP-BEV@0.50</th></tr></thead>
+    <tbody>
+      <tr><td>Zero-shot (either architecture, any 2D input — incl. GT boxes)</td>
+          <td class="hl">0.00</td><td class="hl">0.00</td></tr>
+      <tr><td>Fine-tuned OVMono3D-LIFT (3 seeds)</td><td>13.17 ± 0.69</td><td>8.68 ± 0.47</td></tr>
+    </tbody>
+  </table>
+  <p>Open-vocabulary 2D localisation works zero-shot (50.55 AP@50); the 3D lifting stage is
+  what fails. After fine-tuning, <b>depth accounts for 84% of the remaining 3D error</b>
+  (and &gt;99% zero-shot) — monocular aerial depth under unknown, varying focal length is the
+  open problem this benchmark isolates.</p>
+
+  <h2 id="bibtex">BibTeX</h2>
+  <pre class="bib">@inproceedings{shukla2026wildbox,
+  title     = {WildBox: A Dataset and Benchmark for Aerial Monocular 3D Detection
+               of African Savanna Wildlife},
+  author    = {Shukla, Vandita and Meier, Kilian and Laporte-Devylder, Lucie and
+               Rondeau Saint-Jean, Camille and Kline, Jenna M. and Costelloe, Blair R. and
+               Tuia, Devis and Remondino, Fabio and Risse, Benjamin},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</pre>
+
+  <p class="footer">WildBox was collected under applicable local laws and valid permits, with
+  efforts to minimise disturbance to wildlife.<br>
+  Part of the <a href="https://wilddrone.eu" style="color:var(--accent2)">WildDrone</a> project.</p>
+
+</div>
+</body>
+</html>
